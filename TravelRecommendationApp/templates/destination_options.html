@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="{% static 'Travel_buddy/css/options.css' %}" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+      integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>SignUp/Interests</title>
+  </head>
+  <body>
+    <a href="/Travel_Buddy/home/"><i class="fa-solid fa-backward back"></i>Previous</a>
+    <h1>Choose your preference for Destination</h1>
+
+    <!--<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>-->
+    <!--<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>-->
+    <!--<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>-->
+    <!--Form 1 for seasons-->
+    <form
+      action="/TravelRecommendationApp/recommend_category/"
+      method="POST"
+      enctype="multipart/form-data"
+    >
+      {% csrf_token %}
+      <div class="card">
+        <h1>Scenes of Season</h1>
+        <div class="option_container">
+          <div class="container">
+            <h3 style="color: black">Summer</h3>
+            <input name="category" type="checkbox" id="c1" value="summer" />
+            <label for="c1"
+              ><img
+                src="{% static 'Travel_buddy/images/destination_options/summer.gif' %}"
+              />
+              <div class="info">
+                Enjoy your summer with us and travel best destination for summer
+                with us.
+              </div>
+            </label>
+          </div>
+          <div class="container">
+            <h3 style="color: black">Winter</h3>
+            <input name="category" type="checkbox" id="c2"  value="winter" /><label for="c2">
+              <img
+                src="{% static 'Travel_buddy/images/destination_options/winter.gif' %}"
+              />
+              <div class="info">
+                Winter season is likely that all people like. Snowfall, Camp
+                fire is the best thing people like.
+              </div>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!--Form 2-->
+
+      <div class="card">
+        <h1>My Bucket List</h1>
+        <div class="option_container">
+          <div class="container">
+            <h3>Ecotourism</h3>
+            <input name="category" type="checkbox" id="b1" value="ecotourism" />
+            <label for="b1"
+              ><img
+                src="{% static 'Travel_buddy/images/destination_options/nature.jpg' %}"
+              />
+              <div class="info">
+                A responsible travel to natural areas that conserves the
+                environment, sustains the well-being of the local people, and
+                involves interpretation and education and much more . . .
+              </div>
+            </label>
+          </div>
+
+          <div class="container">
+            <h3>Wildlife</h3>
+            <input name="category" type="checkbox" id="b2" value="wildlife" />
+            <label for="b2"
+              ><img
+                src="{% static 'Travel_buddy/images/destination_options/wildlife.jpg' %}"
+              />
+              <div class="info">
+                Wildlife Tourism is a best option for your bucket list. You go
+                on wildlife safari, interaction with local animal and plants and
+                much more . . .
+              </div>
+            </label>
+          </div>
+
+          <div class="container">
+            <h3>Town</h3>
+            <input name="category" type="checkbox" id="b3" value="town" />
+            <label for="b3"
+              ><img
+                src="{% static 'Travel_buddy/images/destination_options/town.jpeg' %}"
+              />
+              <div class="info">
+                Medieval era with a blend of modern era thats why you visit
+                town.
+              </div>
+            </label>
+          </div>
+
+          <div class="container">
+            <h3>City</h3>
+            <input name="category" type="checkbox" id="b4" value="city" />
+            <label for="b4"
+              ><img
+                src="{% static 'Travel_buddy/images/destination_options/city.jpg' %}"
+              />
+              <div class="info">
+                Want to see many things in one visits well known cities with us
+              </div>
+            </label>
+          </div>
+
+          <div class="container">
+            <h3>Rural</h3>
+            <input name="category" type="checkbox" id="b5" value="rural" />
+            <label for="b5"
+              ><img
+                src="{% static 'Travel_buddy/images/destination_options/rural.jpg' %}"
+              />
+              <div class="info">
+                Rural areas best way to time travel lets go back to old times
+              </div>
+            </label>
+          </div>
+
+          <div class="container">
+            <h3>Educational Tour</h3>
+            <input name="category" type="checkbox" id="b6" value="education" />
+            <label for="b6"
+              ><img
+                src="{% static 'Travel_buddy/images/destination_options/education.png' %}"
+              />
+              <div class="info">
+                Educational tours is the best way to increase your knowledge
+                about the historical origin of the area.
+              </div>
+            </label>
+          </div>
+
+          <div class="container">
+            <h3>Heritage</h3>
+            <input name="category" type="checkbox" id="b7" value="heritage" />
+            <label for="b7"
+              ><img
+                src="{% static 'Travel_buddy/images/destination_options/heritage.jpeg' %}"
+              />
+              <div class="info">
+                Heritage sites is always worth to see. Specially the details and
+                the geometry.
+              </div>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!--Form 3-->
+
+      <div class="card">
+        <h1>Beauty of Nature</h1>
+        <div class="option_container">
+          <div class="container">
+            <h3>Beach</h3>
+            <input name="category" type="checkbox" id="l1" value="beach" />
+            <label for="l1"
+              ><img
+                src="{% static 'Travel_buddy/images/destination_options/beach.jpg' %}"
+              />
+              <div class="info">
+                Fed up of summer? Need a Refreshment? why not visit beaches let
+                us look some good beaches for you to visit
+              </div>
+            </label>
+          </div>
+          <div class="container">
+            <h3>Mountains</h3>
+            <input name="category" type="checkbox" id="l2" value="mountains" /><label for="l2">
+              <img
+                src="{% static 'Travel_buddy/images/destination_options/mountains.jpg' %}"
+              />
+              <div class="info">
+                Love Trekking montains maybe heaven for you. Discover the beauty
+                of maountains with us.
+              </div>
+            </label>
+          </div>
+          <div class="container">
+            <h3>Desert</h3>
+            <input name="category" type="checkbox" id="l3" value="desert" /><label for="l3">
+              <img
+                src="{% static 'Travel_buddy/images/destination_options/desert.jpg' %}"
+              />
+              <div class="info">
+                Enjoy desert safari with the best food and learn how to live in
+                desert. Enjoy belly dance with our greatest and exclusive model
+                HOE-MZA
+              </div>
+            </label>
+          </div>
+          <div class="container">
+            <h3>Plains</h3>
+            <input name="category" type="checkbox" id="l4" value="plains" /><label for="l4">
+              <img
+                src="{% static 'Travel_buddy/images/destination_options/plain.jpg' %}"
+              />
+              <div class="info">
+                Travel to plains to see amazing landscape and wildlife. It will
+                be your favourite location if you like smooth rides.
+              </div>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!--Form 4-->
+
+      <div class="card">
+        <h1>Knowing the roots</h1>
+        <div class="option_container">
+          <div class="container">
+            <h3>Historical</h3>
+            <input name="category" type="checkbox" id="r1" value="beach" />
+            <label for="r1"
+              ><img
+                src="{% static 'Travel_buddy/images/destination_options/historical.jpg' %}"
+              />
+              <div class="info">
+                Historical tourism includes sight seeing and visiting to various
+                historical places located near the area to paricularly know more
+                about the origins of a culture.
+              </div>
+            </label>
+          </div>
+
+          <div class="container">
+            <h3>Cultural</h3>
+            <input name="category" type="checkbox" id="r2" value="mountains" /><label for="r2">
+              <img
+                src="{% static 'Travel_buddy/images/destination_options/culture.jpg' %}"
+              />
+              <div class="info">
+                Culture of an area is its identity. Knowing culture means
+                knowing the origins come discover with us the origins of
+                different countries.
+              </div>
+            </label>
+          </div>
+
+          <div class="container">
+            <h3>Religious</h3>
+            <input name="category" type="checkbox" id="r3" value="desert" /><label for="r3">
+              <img
+                src="{% static 'Travel_buddy/images/destination_options/religious.jpg' %}"
+              />
+              <div class="info">
+                Returning back to our roots and origins means to visit holy
+                places of our religion. Lets together go back to our roots.
+              </div>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!--Form 5-->
+      <div class="card">
+        <h1>Hangouts</h1>
+        <div class="option_container">
+          <div class="container">
+            <h3>Resort</h3>
+            <input name="category" type="checkbox" id="h1" value="beach" />
+            <label for="h1"
+              ><img
+                src="{% static 'Travel_buddy/images/destination_options/resort.jpg' %}"
+              />
+              <div class="info">
+                A best way to chill out and hangout with your friends. Exclusive
+                rooms, Tasty food and pool what else you need
+              </div>
+            </label>
+          </div>
+
+          <div class="container">
+            <h3>Party</h3>
+            <input name="category" type="checkbox" id="h2" value="mountains" /><label for="h2">
+              <img
+                src="{% static 'Travel_buddy/images/destination_options/party.jpg' %}"
+              />
+              <div class="info">
+                Attend the biggest party events with us and get exclusive entry
+                and bookings and all done for you. Exiciting offers and awesome
+                experience are waiting for you . . .
+              </div>
+            </label>
+          </div>
+
+          <div class="container">
+            <h3>Camping</h3>
+            <input name="category" type="checkbox" id="h3" value="desert" /><label for="h3">
+              <img
+                src="{% static 'Travel_buddy/images/destination_options/camping.jpg' %}"
+              />
+              <div class="info">
+                Get close to nature with awesome camping events all over the
+                world. Trekking, lakeside, adventure and much more . . .
+              </div>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h1>Ratings</h1>
+        <input name="category"
+          type="range"
+          name=""
+          id="range"
+          min="1"
+          max="5"
+          value="3"
+          step="0.5"
+        />
+        <div class="rating">
+          <b id="ratings"></b><i class="fas fa-star"></i>
+        </div>
+      </div>
+
+      <input type="submit" value="Next" />
+    </form>
+  </body>
+  <script>
+    var slider = document.getElementById("range");
+    var output = document.getElementById("ratings");
+    output.innerHTML = slider.value;
+
+    slider.oninput = function () {
+      output.innerHTML = this.value;
+    };
+  </script>
+</html>

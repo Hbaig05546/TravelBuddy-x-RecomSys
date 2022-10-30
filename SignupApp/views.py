@@ -42,11 +42,11 @@ def signup(request):
 			registered = True
 
 			# return render(request, 'login.html',{'success':'You have been registered successfully !\nPlease login to explore...'})
-			return HttpResponseRedirect(reverse('login'))
+			return HttpResponseRedirect('/TravelRecommendationApp/recommend_category/')
 	else:
 		user_form = UserForm()
 		tmsUser_form = TMSUserForm()
-	print((request.FILES.get('pic')))
+	# print((request.FILES.get('pic')))
 	context = {'user_form':user_form, 'tmsUser_form':tmsUser_form, 'registered':registered}
 	return render(request,'signup.html',context)
 

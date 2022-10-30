@@ -17,6 +17,7 @@ urlpatterns = [
     path('BookTicketApp/', include('BookTicketApp.urls')),
     path('PaymentApp/', include('PaymentApp.urls')),
     path('DocumentApp/', include('DocumentApp.urls')),
+    path('TravelRecommendationApp/', include('TravelRecommendationApp.urls')),
 ]
 
 

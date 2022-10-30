@@ -2,10 +2,10 @@
 
 from django.shortcuts import render
 from django.template.context_processors import csrf
-from BookTicketApp.models import PackageDetails,TMSBooking
+from BookTicketApp.models import PackageDetail,TMSBooking
 from django.contrib.auth.decorators import login_required
 from SignupApp.models import TMSUser
-from BookTicketApp.models import PackageDetails,TMSBooking
+from BookTicketApp.models import PackageDetail,TMSBooking
 from .models import TMSPayment
 from django.contrib.auth.models import User
 from django.contrib.sessions.models import Session
@@ -39,7 +39,7 @@ def bill(request):
         p=TMSPayment(payment_id=paymentId,amount=total_amount,mode=modeOfPayment,tmsuser=TMSUser.objects.get(user=request.user))
         
         s=TMSBooking(booking_id=bookingid,amount=total_amount,source=source1,destinationCity=city,destinationCountry=country,
-        			package=PackageDetails.objects.get(id=pckg),departure_date=date,
+        			package=PackageDetail.objects.get(id=pckg),departure_date=date,
         			no_of_person=no_of_person,tmsuser=TMSUser.objects.get(user=request.user))
         p.save()
         s.save()

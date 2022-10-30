@@ -8,3 +8,5 @@ class TMSPayment(models.Model):
     tmsuser = models.ForeignKey(TMSUser, on_delete=models.CASCADE, null=True)
     amount=models.PositiveIntegerField(default=None, null=True)
     mode=models.CharField(default=None, null=True,max_length=25)
+
+

@@ -198,31 +198,34 @@
   
           <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
             <div class="offcanvas-header">
-              <h5 class="offcanvas-title" id="offcanvasNavbarLabel"><b style="font-size: 2vw;">Welcome {{request.user.first_name|title}}</b></h5>
+              <h5 class="offcanvas-title" id="offcanvasNavbarLabel"><b style="font-size: 1.5vw;">Welcome {{request.user.first_name|title}}</b></h5>
               <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body" style="background-color: black;">
                 <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                   <li class="nav-item">
-                      <a class="nav-link"  href="/Travel_Buddy/home/"  style="font-size: 2vw;"><i class="fas fa-home" style="font-size: 2vw;"></i></a>
+                      <a class="nav-link"  href="/Travel_Buddy/home/"  style="font-size: 1.5vw;"><i class="fas fa-home" style="font-size: 1.5vw;"></i></a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link " aria-current="page" href="/Travel_Buddy/profile/"  style="font-size: 2vw;">Profile</a>
+                    <a class="nav-link " aria-current="page" href="/Travel_Buddy/profile/"  style="font-size: 1.5vw;">Profile</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link " aria-current="page" href="/SignupApp/userUpdate"  style="font-size: 2vw;">Update Profile</a>
+                    <a class="nav-link " aria-current="page" href="/TravelRecommendationApp/recommend_category/"  style="font-size: 1.5vw;">Set Destination Preferences</a>
                   </li>
                   <li class="nav-item">
-                      <a class="nav-link " href="/DocumentApp/userDocs/" style="font-size: 2vw;">Documents</a>
+                    <a class="nav-link " aria-current="page" href="/SignupApp/userUpdate"  style="font-size: 1.5vw;">Update Profile</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="/BookTicketApp/booking_history/" style="font-size: 2vw;">Travel History</a>
+                      <a class="nav-link " href="/DocumentApp/userDocs/" style="font-size: 1.5vw;">Documents</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="/Travel_Buddy/destinations" style="font-size: 2vw;">Destinations</a>
+                    <a class="nav-link" href="/BookTicketApp/booking_history/" style="font-size: 1.5vw;">Travel History</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="/BookTicketApp/book_ticket/" style="font-size: 2vw;">Plan a
+                    <a class="nav-link" href="/Travel_Buddy/destinations" style="font-size: 1.5vw;">Destinations</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/BookTicketApp/book_ticket/" style="font-size: 1.5vw;">Plan a
                         Tour</a>
                 </li>
                 <li class="nav-item">

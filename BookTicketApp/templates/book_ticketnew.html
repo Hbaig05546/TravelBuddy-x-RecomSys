@@ -90,7 +90,7 @@
         .pack label
         {
             float: left;
-            font-size: 2vw;
+            font-size: 1.7vw;
             margin-top: 0%;
             margin-left: 1%;
             
@@ -210,28 +210,35 @@
             <p>Travelling From</p>
             <input type="text" name="source" value="India" maxlength="20" readonly>
             <p>To</p>
-            <select id="selectpackage" name="destination" onChange="if (this.selectedIndex) price_updater()" required>
+            {% if selected_dest %}
+            <select id="selectpackage" name="destination"  required>
+                <option selected id="{{ selected_dest.amount }}" value="{{ selected_dest.id }}">{{ selected_dest.pTitle }}, {{selected_dest.pLocation}} @ &#x20B9;{{selected_dest.amount}}</option>  
+            </select>
+            {% else %}
+
+            <select id="selectpackage" name="destination"  required>
                 <option disabled selected>Pls Select Your Package</option>
                 {% for package in packages %}
-                <option id="{{ package.amount }}" value="{{ package.id }}">{{ countryname|country_name:package.pCountry }}, {{package.pCity}} @ &#x20B9;{{package.amount}}</option>
+                <option id="{{ package.amount }}" value="{{ package.id }}">{{ package.pTitle }}, {{package.pLocation}} @ &#x20B9;{{package.amount}}</option>
                 {% endfor %}
             </select>
+            {% endif %}
             
 
-            <p>Select Package<a href="/Travel_Buddy/package_detail/"><i style="color:green;" class="fas fa-info-circle fa=5x"></i></a></p>
+            <p>Select Package<a href="/Travel_Buddy/package_detail/"><i style="color:green;font-size: 2vw;" class="fas fa-info-circle fa"></i></a></p>
 
             <div class="pack">
-            <input type="radio" name="radio" id="r1" value="Common" onclick="myFunction()" checked>
+            <input type="radio" name="radio" id="r1" value="Common" onclick="myFunction(); price_updater()" checked>
             <label>Common Pack</label>
             </div>
 
             <div class="pack">
-                <input type="radio" name="radio" id="r2" value="Special" onclick="myFunction()">
+                <input type="radio" name="radio" id="r2" value="Special" onclick="myFunction(); price_updater()">
                 <label >Special Pack</label>
             </div>
 
             <div class="pack">
-                <input type="radio" name="radio" id="r3" value="Luxury" onclick="myFunction()" >
+                <input type="radio" name="radio" id="r3" value="Luxury" onclick="myFunction(); price_updater()" >
                 <label >Luxury Pack</label>
             </div>
 
@@ -239,17 +246,17 @@
 
             <div class="details" id="pack1">
                 <h5>Common</h5>
-                <h6 id="commonprice">&#x20B9;0</h6>
+                <h6 id="commonprice">&#x20B9;</h6>
             </div>
 
             <div class="details" id="pack2" style="background-color: silver;">
                 <h5>Special</h5>
-                <h6 id="specialprice">&#x20B9;0</h6>
+                <h6 id="specialprice" >&#x20B9;</h6>
             </div>
 
             <div class="details" id="pack3" style="background-color: gold;">
                 <h5>Luxury</h5>
-                <h6 id="luxuryprice">&#x20B9;0</h6>
+                <h6 id="luxuryprice">&#x20B9;</h6>
             </div>
             
             
@@ -264,62 +271,7 @@
             <input type="submit" value="Next >">
         </form>
     </div>
-    <!-- <div class="wrapper">
-        <h2>Book tour</h2>
-            <form action="/BookTicketApp/bookingdataadd/" method="post">{% csrf_token %}
-            <label class="label">Booking id</label>
-            <input type="text" name="bookingid" value="{{ randomid }}"  readonly maxlength="6">
-            <label>Trvaelling From</label>
-            <select name="source">
-                <option>{{ country }}</option>
-            </select>
-            <label>To</label>
-            <select name="destination">
-                <option>Kabankalan</option>
-                <option>Himamaylan</option>
-                <option>DUmaguete</option>
-                <option>Hinigaran</option>
-                <option>Bago</option>
-                <option>Valladolid</option>
-                <option>Guimaras</option>
-                <option>Iloiolo</option>
-                <option>Dumangas</option>
-                <option>Palawan</option>
-                <option>Antique</option>
-                <option>Aklan</option>
-            </select>
-            <p style="color: red">{{ request.session.error3 }}</p>
-            <label>Package</label>
-            <select name="package">
-            {% for pack in packs %}
-                <option value='{{ pack.pname }}'>{{ pack.pname }}</option>
-
-            {% endfor %}
-            </select>
-
-                <label>Departure date</label>
-                <input id="datefield" type="date" name="date" onload="setMinDate()">
-                <script>
-                    setMinDate();
-                    function setMinDate(){
-                        var today = new Date();
-                        var dd = today.getDate();
-                        var mm = today.getMonth()+1;
-                        var yyyy = today.getFullYear();
-                        if(dd<10){
-                            dd='0'+dd
-                        }
-                        if(mm<10){
-                            mm='0'+mm
-                        }
-                        today = yyyy+'-'+mm+'-'+dd;
-                        document.getElementById("datefield").setAttribute("min", today);
-                    }
-                </script>
-                <label>No of person</label>
-            <input type="text" name="person" placeholder="" id="from" required>
-            <input type="submit" value="book" />
-            </form> -->
+    
     
     </div>
     <br>

@@ -4,8 +4,14 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
 from django.template.context_processors import csrf
-from BookTicketApp.models import PackageDetails
+from BookTicketApp.models import PackageDetail
+from django.views.generic import View, TemplateView
+from TravelRecommendationApp.models import RecommendedDestination_cat
 
+
+
+class IndexView(TemplateView):
+	template_name = 'index.html'
 
 
 
@@ -18,7 +24,12 @@ def home(request):
 	c={}
 	c.update(csrf(request))
 	request.session['temp'] = "xyz"
-	c['packs'] = PackageDetails.objects.all()
+	c['packs'] = PackageDetail.objects.all()
+	try:
+		c['rcm_destinations_cat'] = RecommendedDestination_cat.objects.filter(
+				recommendation_template=request.user.dreamdestination)
+	except:
+		pass
 	return render(request,'home.html',c)
 
 def user_login(request):
@@ -44,7 +55,7 @@ def user_login(request):
 
 def user_logout(request):
 	logout(request)
-	return render(request, 'logout.html')
+	return render(request, 'logout_new.html')
 
 def aboutus(request):
 	request.session['temp'] = "xyz"
@@ -52,16 +63,16 @@ def aboutus(request):
 
 def profile(request):
 	request.session['temp'] = "xyz"
-	return render(request,'profile.html')
+	return render(request,'profile_new.html')
 
 def package_detail(request):
 	request.session['temp'] = "xyz"
 	return render(request,'package_detail.html')
 
 def destinationsView(request):
-    # print(dir(PackageDetails))
+    # print(dir(PackageDetail))
     
-    destinations = PackageDetails.objects.all()
+    destinations = PackageDetail.objects.all()
     
     c={
         'destinations':destinations,
@@ -69,7 +80,7 @@ def destinationsView(request):
     }
     
     request.session['temp'] = "xyz"
-    return render(request,'destinations.html',c)
+    return render(request,'destinations_new.html',c)
      
 def index(request):
 	request.session['temp'] = "xyz"

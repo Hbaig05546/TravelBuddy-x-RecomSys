@@ -279,9 +279,9 @@
         {% for destination in destinations %}
         <a href="/BookTicketApp/book_ticket/">
             <div class="column">
-                <img src="{{ destination.pic.url }}" alt="Image of the city">
-                <h1>{{ destination.pCity }}</h1>
-                <div class="info"><i class="fas fa-map-marker-alt"></i><b>{{ countryname|country_name:destination.pCountry }}</b></div>
+                <img src="{{ destination.pic }}" alt="Image of the city">
+                <h1>{{ destination.pTitle }}</h1>
+                <div class="info"><i class="fas fa-map-marker-alt"></i><b>{{ destination.pLocation }}</b></div>
                 <button class="button">Book Tickets</button>
             </div>
         </a>

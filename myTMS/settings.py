@@ -27,6 +27,8 @@ INSTALLED_APPS = [
     'BookTicketApp',
     'PaymentApp',
     'DocumentApp',
+    'TravelRecommendationApp',
+    'import_export',
 ]
 
 MIDDLEWARE = [

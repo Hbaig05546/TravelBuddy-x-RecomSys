@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+{% load static %}
+{% load filters %}
+<head>
+    <link rel="shortcut icon" type="image/png" href="Images/icon.PNG">
+    <title>Plan_a_Tour/Select_Destinations</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css"
+        integrity="sha512-u7ppO4TLg4v6EY8yQ6T6d66inT0daGyTodAi6ycbw9+/AU8KMLAF7Z7YGKPMRA96v7t+c7O1s6YCTGkok6p9ZA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Teko:wght@300&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Carattere&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 100%;
+            margin: 0%;
+            padding: 1%;
+            height: 5vw;
+            overflow: hidden;
+            z-index: 1;
+            background-color: black;
+            box-sizing: border-box;
+        }
+
+        .container a {
+            font-size: 1.9vw;
+            float: right;
+            display: block;
+            color: white;
+            font-family: "Teko";
+            text-align: center;
+            margin-top: -0.7%;
+            padding: 1%;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .container a:hover {
+            color: rgb(252, 115, 35);
+        }
+
+
+        .p1 {
+            font-size: 1.5vw;
+            float: left;
+            display: block;
+            color: white;
+            font-family: "Teko";
+            text-align: center;
+            padding: 0.3vw 1vw;
+            text-decoration: none;
+        }
+
+        .navbar {
+            width: 100%;
+            height: 8vw;
+            overflow: hidden;
+            background-color: whitesmoke;
+        }
+
+        .navbar a {
+            position: sticky;
+            font-size: 2vw;
+            float: right;
+            display: block;
+            color: #6C717A;
+            font-family: "Teko";
+            text-align: center;
+            padding: 2.7vw 2vw;
+            text-decoration: none;
+        }
+
+        .navbar a:hover {
+            color: rgb(245, 185, 73);
+        }
+
+        .navbar .a1 {
+            float: left;
+            display: block;
+        }
+
+        .navbar .avatar {
+            position: relative;
+            padding: 0%;
+            margin: 0%;
+            width: 9%;
+            height: 100%;
+            color: white;
+            background-color: lightgray;
+        }
+
+        .avatar img {
+            position: relative;
+            margin: 5%;
+            margin-top: 11%;
+            border-radius: 100%;
+            width: 6vw;
+            height: 6vw;
+        }
+
+        .navimage {
+            position: absolute;
+            text-align: left;
+            width: 19vw;
+            height: 8vw;
+        }
+
+
+        .heading {
+            text-align: center;
+            font-family: "Carattere";
+            font-size: 3vw;
+            margin: 1%;
+        }
+
+        .heading i {
+            padding: 1%;
+        }
+
+        .card {
+            width: 100%;
+            min-height: 35vw;
+        }
+
+        .column_card
+        {
+            position: relative;
+            width: 100%;
+            padding-top:1% ;
+            padding-bottom:1%;
+            display: grid;
+            place-items: center;
+            grid-template-columns: repeat(5,1fr);
+        }
+        a{
+            text-decoration: none;
+        }
+
+        .column {
+            height: 25vw;
+            width: 18.5vw;
+            font-family: "teko";
+            box-shadow: 0 0 15px black;
+            position: relative;
+            margin-top: 5%;
+            font-size: 1.3vw;
+            box-shadow: grey 0px 0px 10px;
+            animation: fadein 1s;
+            cursor: pointer;
+            color: black;
+        }
+
+        .column img {
+            width: 100%;
+            height: 50%;
+            margin: 0%;
+        }
+
+        .column:hover {
+            transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: scale(0.9);
+            box-shadow: rgb(7, 164, 255) 0px 0px 23px;
+        }
+
+        
+
+        .end {
+            width: 100%;
+            height: 5.5vw;
+            background-color: #2f58a3;
+            color: white;
+            font-family: "Teko";
+            font-size: 2vw;
+            text-align: center;
+            padding-top: 2vw;
+        }
+
+        @keyframes fadein {
+            0% {
+                transform: scale(0);
+
+            }
+
+            100% {
+                transform: scale(1);
+            }
+
+        }
+
+
+        .info {
+            margin-top: 1%;
+            position: relative;
+            font-family: "Teko";
+            font-size: 1.7vw;
+            height: 8%;
+            margin-left: 3%;
+            margin-right: 3%;
+        }
+
+        h1 {
+            margin-left: 5%;
+            margin-bottom: 5%;
+        }
+
+        .info i {
+            float: left;
+            font-size: 1.3vw;
+            margin-right: 3%;
+            margin-top: 2%;
+        }
+
+        p
+        {
+            position: absolute;
+            margin-left: 3%;
+            font-size: 1.3vw;
+            bottom: 5%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <p class="p1">9998887723</p>
+        <p class="p1">.</p>
+        <p class="p1">travelbuddy@gmail.com</p>
+        <p class="p1">.</p>
+        <p class="p1">Mumbai, India</p>
+        {% if request.user.is_authenticated %}
+        <a href="/Travel_Buddy/logout">Logout</a>
+        {% endif %}
+        {% if request.user.is_superuser %}
+        <a href="/admin/" id="admin" target="_blank">Admin Console</a>
+        {% endif %}
+
+        {% if request.user.is_authenticated %}
+
+        {% else %}
+        <a href="/SignupApp/signup/">Sign Up</a>
+        <a href="/Travel_Buddy/login">Sign In</a>
+        {% endif %}
+    </div>
+    <div class="navbar">
+        <div class="a1"><image src="{%static "/Travel_Buddy/images/travellogo.png" %}" class="navimage"
+                alt="Website Logo"></image>
+        </div>
+        {% if request.user.is_authenticated %}
+        <a href="/Travel_Buddy/profile/" class="avatar"><img src="{{ request.user.tmsuser.pic.url }}"
+                alt="Document Protection icon"></a>
+        <!--Put Image Here-->
+        {% endif %}
+        <a href="/Travel_Buddy/aboutus/">ABOUT US</a>
+        <a href="/Travel_Buddy/destinations/">DESTINATIONS</a>
+        {% if request.user.is_authenticated %}
+        <a href="/BookTicketApp/book_ticket">PLAN A TOUR</a>
+        <a href="/Travel_Buddy/profile/">PROFILE</a>
+        {% endif %}
+        <a href="/Travel_Buddy/home/">HOME</a>
+    </div>
+
+    <div class="card">
+        <h1 class="heading"><i class="fas fa-map-marker-alt"></i>Recommendations based on {{ sample_dest }}</h1>
+
+        
+        <!-- ################################################################################ -->
+        <!-- dynamic destinations -->
+        <!-- ################################################################################ -->
+        <div class="column_card">
+        {% for rcm_destination in rcm_destinations %}
+        <form name="{{ rcm_destination.pTitle }}" action="/BookTicketApp/book_ticket/" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input name="des_title" type="hidden" value="{{ rcm_destination.pTitle }}">
+            <div class="column" onclick="document.forms['{{ rcm_destination.pTitle }}'].submit();">
+                <img src="{{ rcm_destination.pic }}" alt="Image of the city">
+                <h1>{{ rcm_destination.pTitle }}</h1>
+                <div class="info"><i class="fas fa-map-marker-alt"></i><b>{{ rcm_destination.pLocation }}</b></div>
+                <p><b>Click to book Ticket</b></p>
+            </div>
+        </form>
+
+        {% endfor %}
+        </div>
+        <!-- ################################################################################ -->
+        <!-- static/dummy destinations -->
+        <!-- ################################################################################ -->
+        
+        <!-- <div class="column">
+            <img src="{%static "/Travel_Buddy/images/Places/paris.jpg" %}">
+            <h1>Paris</h1>
+            <div class="info"><i class="fas fa-map-marker-alt"></i><b>France</b></div>
+        </div> -->
+        
+
+       
+
+    </div>
+
+    
+    <div class="end">© Copyright Reserved with Hypertext-Assasins-HAZS</div>
+</body>
+
+</html>

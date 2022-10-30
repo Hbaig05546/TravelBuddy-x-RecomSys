@@ -641,87 +641,114 @@
     
     <div class="card1">
         <div class="header">Around the world</div>
-        <div class="header1">Top Destinations to visit</div>
+        
         
         <div class="row">
+        {% if request.user.is_authenticated %}
+        {% if rcm_destinations_cat %}
+        <div class="header1">Recommended for You </div>
+        {% for rcm_destination_cat in rcm_destinations_cat %}
+        <form name="{{ rcm_destination_cat.pTitle }}" action="/BookTicketApp/book_ticket/" method="post" enctype="multipart/form-data">
+           {% csrf_token %}
+           <input name="des_title" type="hidden" value="{{ rcm_destination_cat.pTitle }}">
+           <div class="column" onclick="document.forms['{{ rcm_destination_cat.pTitle }}'].submit();">
+                <img src="{{ rcm_destination_cat.pic }}" alt="{{ rcm_destination_cat.pic }}">
+                <div class="name">{{ rcm_destination_cat.pTitle }}</div>
+                <div class="name" style="margin: 2.7rem;">{{ rcm_destination_cat.pLocation }}</div>
+                <div class="detail" style="overflow: hidden,">{{ rcm_destination_cat.pdetails }}</div>
+                
+                <!-- <div class="detail">{{ rcmdestination.pdetails }}
+                </div> -->
+            </div>
+        </form>
+        {% endfor %}
         
+        
+        {% else %}
+        <a href="/TravelRecommendationApp/recommend_category/"><div class="header1">Set your Preferences </div></a>
+        {% endif %}
+        {% else %}
         <div class="column">
-        <a href="/Destinations_info/Paris/">{%load static%}<img src="{%static "/Travel_Buddy/images/Places/paris.jpg" %}" alt="Image of the city Paris ">
-        <div class="name">Paris,France</div>
-        <div class="detail">1.Start the day on the Champs-Élysées
-        <br>2.Go to the top of the Eiffel Tower
-        <br>3.Must-See: Louvre museum
-        <br>4.Must-See: Notre Dame Cathedral
-        <br>5.Have fun at Disneyland Paris
-        <br><br>Click for more details...
-        </div>
-        </a>
-        </div>
-
-        <div class="column">
-            <a href="#">{%load static%}<img src="{%static "/Travel_Buddy/images/Places/toronto.jpg" %}" alt="Image of the city Toronto ">
-            <div class="name">Toronto,Canada</div>
-            <div class="detail">1.See the View from the CN Tower
-            <br>2.Visit the Royal Ontario Museum (ROM)
-            <br>3.Ripley's Aquarium of Canada
-            <br>4.Art Gallery of Ontario (AGO)
-            <br>5.Day Trip to Niagara Falls
+            <a href="/Destinations_info/Paris/"><img src="{%static "/Travel_Buddy/images/Places/paris.jpg" %}" alt="Image of the city Paris ">
+            <div class="name">Paris,France</div>
+            <div class="detail">1.Start the day on the Champs-Élysées
+            <br>2.Go to the top of the Eiffel Tower
+            <br>3.Must-See: Louvre museum
+            <br>4.Must-See: Notre Dame Cathedral
+            <br>5.Have fun at Disneyland Paris
             <br><br>Click for more details...
             </div>
             </a>
-        </div>
-
-        <div class="column">
-            <a href="#">{%load static%}<img src="{%static "/Travel_Buddy/images/Places/losangeles.jpg" %}" alt="Image of the city Los Angeles ">
-            <div class="name">Los Angeles,USA</div>
-            <div class="detail">1.See the View from the CN Tower
-            <br>2.Visit the Royal Ontario Museum (ROM)
-            <br>3.Ripley's Aquarium of Canada
-            <br>4.Art Gallery of Ontario (AGO)
-            <br>5.Day Trip to Niagara Falls
-            <br><br>Click for more details...
             </div>
-            </a>
-        </div>
-
-        <div class="column">
-            <a href="#">{%load static%}<img src="{%static "/Travel_Buddy/images/Places/mumbai.jpg" %}" alt="Image of the city Mumbai ">
-            <div class="name">Mumbai,India</div>
-            <div class="detail">1.Gateway of India
-            <br>2.Sanjay Gandhi National Park
-            <br>3.Red Carpet Wax Museum
-            <br>4.Haji Ali Dargah
-            <br>5.Marine Drive
-            <br><br>Click for more details...
+    
+            <div class="column">
+                <a href="#"><img src="{%static "/Travel_Buddy/images/Places/toronto.jpg" %}" alt="Image of the city Toronto ">
+                <div class="name">Toronto,Canada</div>
+                <div class="detail">1.See the View from the CN Tower
+                <br>2.Visit the Royal Ontario Museum (ROM)
+                <br>3.Ripley's Aquarium of Canada
+                <br>4.Art Gallery of Ontario (AGO)
+                <br>5.Day Trip to Niagara Falls
+                <br><br>Click for more details...
+                </div>
+                </a>
             </div>
-            </a>
-        </div>
-
-        <div class="column">
-            <a href="#"><img src="{%static "/Travel_Buddy/images/Places/tokyo.jpg" %}" alt="Image of the city Tokyo ">
-            <div class="name">Tokyo,Japan</div>
-            <div class="detail">1.Tour to The Imperial Palace
-            <br>2.Visit the Sensō-ji Temple
-            <br>3.Enjoy Nature at Ueno Park and Ueno Zoo
-            <br>4.Wander through the Tokyo National Museum
-            <br>5.See the View from the Tokyo Skytree
-            <br><br>Click for more details...
+    
+            <div class="column">
+                <a href="#"><img src="{%static "/Travel_Buddy/images/Places/losangeles.jpg" %}" alt="Image of the city Los Angeles ">
+                <div class="name">Los Angeles,USA</div>
+                <div class="detail">1.See the View from the CN Tower
+                <br>2.Visit the Royal Ontario Museum (ROM)
+                <br>3.Ripley's Aquarium of Canada
+                <br>4.Art Gallery of Ontario (AGO)
+                <br>5.Day Trip to Niagara Falls
+                <br><br>Click for more details...
+                </div>
+                </a>
             </div>
-            </a>
-        </div>
-
-        <div class="column">
-            <a href="#"><img src="{%static "/Travel_Buddy/images/Places/melbourne.jpg" %}" alt="Image of the city Melbourne ">
-            <div class="name">Melbourne,Australia</div>
-            <div class="detail">1.Federation Square
-            <br>2.Royal Botanic Gardens
-            <br>3.Parliament House
-            <br>4.Eureka Tower
-            <br>5.Queen Victoria Market
-            <br><br>Click for more details...
+    
+            <div class="column">
+                <a href="#"><img src="{%static "/Travel_Buddy/images/Places/mumbai.jpg" %}" alt="Image of the city Mumbai ">
+                <div class="name">Mumbai,India</div>
+                <div class="detail">1.Gateway of India
+                <br>2.Sanjay Gandhi National Park
+                <br>3.Red Carpet Wax Museum
+                <br>4.Haji Ali Dargah
+                <br>5.Marine Drive
+                <br><br>Click for more details...
+                </div>
+                </a>
             </div>
-            </a>
-        </div>
+    
+            <div class="column">
+                <a href="#"><img src="{%static "/Travel_Buddy/images/Places/tokyo.jpg" %}" alt="Image of the city Tokyo ">
+                <div class="name">Tokyo,Japan</div>
+                <div class="detail">1.Tour to The Imperial Palace
+                <br>2.Visit the Sensō-ji Temple
+                <br>3.Enjoy Nature at Ueno Park and Ueno Zoo
+                <br>4.Wander through the Tokyo National Museum
+                <br>5.See the View from the Tokyo Skytree
+                <br><br>Click for more details...
+                </div>
+                </a>
+            </div>
+    
+            <div class="column">
+                <a href="#"><img src="{%static "/Travel_Buddy/images/Places/melbourne.jpg" %}" alt="Image of the city Melbourne ">
+                <div class="name">Melbourne,Australia</div>
+                <div class="detail">1.Federation Square
+                <br>2.Royal Botanic Gardens
+                <br>3.Parliament House
+                <br>4.Eureka Tower
+                <br>5.Queen Victoria Market
+                <br><br>Click for more details...
+                </div>
+                </a>
+            </div>
+        {% endif %}
+        
+        
+        
     </div>
     <div ><a href="/Travel_Buddy/destinations/" class="more">Check more destinations <div class="dots">...</div></a></div>
     </div>   
